@@ -82,6 +82,11 @@ for i, grid in enumerate(grids):
         meas_times[i] = vals
         repeats[i] = N
         size[i] = np.log2(np.prod(grid))
+        del timer
+        del stmt
+        del res
+        del prop
+        del ps
         torch.cuda.empty_cache()
     except RuntimeError as ex:
         print(ex)

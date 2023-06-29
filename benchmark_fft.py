@@ -72,7 +72,11 @@ for i, grid in enumerate(grids):
         meas_times[i] = vals
         repeats[i] = N
         size[i] = np.log2(np.prod(grid))
-
+        del timer
+        del stmt
+        del res
+        del prop
+        del ps
         torch.cuda.empty_cache()
     except RuntimeError as ex:
         print(ex)
@@ -82,13 +86,10 @@ median = np.array([np.median(times) for times in meas_times])
 med_ab_dev = np.array([mad(times, scale='normal') for times in meas_times])
 
 tag = 'fft\\' + COMPUTER + '_' + DEVICE + '_fft'
-np.savez(ps.paths['data'] + '..\\' + tag, computer=COMPUTER, device=DEVICE,
+np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(ps.paths['data'] + '..\\' + tag, np.array(meas_times, dtype='object'))
-
-
-# %%
+np.save(ps.paths['data'] + '../' + tag, np.array(meas_times, dtype='object'))
 
 for i, grid in enumerate(grids):
     print(i)
@@ -111,8 +112,11 @@ for i, grid in enumerate(grids):
         meas_times[i] = vals
         repeats[i] = N
         size[i] = np.log2(np.prod(grid))
-
-        torch.cuda.empty_cache()
+        del timer
+        del stmt
+        del res
+        del prop
+        del ps
     except RuntimeError as ex:
         print(ex)
         break
