@@ -1,0 +1,2128 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pspinor package &mdash; spinor-gpe 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Propagation Time" href="benchmarks/benchmark_prop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> spinor-gpe
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operation.html">Basic Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks/index.html">Benchmarks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pspinor package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pspinor-pspinor-module">pspinor.pspinor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pspinor-tensor-propagator-module">pspinor.tensor_propagator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pspinor-prop-result-module">pspinor.prop_result module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spinor_gpe.pspinor.tensor_tools">pspinor.tensor_tools module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spinor_gpe.pspinor.plotting_tools">pspinor.plotting_tools module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spinor_gpe.pspinor">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">spinor-gpe</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>pspinor package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/pspinor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="pspinor-package">
+<h1>pspinor package<a class="headerlink" href="#pspinor-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pspinor-pspinor-module">
+<h2>pspinor.pspinor module<a class="headerlink" href="#pspinor-pspinor-module" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.pspinor.</span></span><span class="sig-name descname"><span class="pre">PSpinor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omeg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_sc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(256,</span> <span class="pre">256)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pop_frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.5,</span> <span class="pre">0.5)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A GPU-compatible simulator of the pseudospin-1/2 GPE.</p>
+<p>Contains the functionality to run a real- or imaginary-time propataion of
+the pseudospin-1/2 Gross-Pitaevskii equation. Contains methods to generate
+the required energy and spatial grids. Also has methods to generate the
+grids for the momentum-(in)dependent coupling between spin components,
+corresponding to an (RF) Raman coupling interaction.</p>
+<p>The dominant length scale is in terms of the harmonic oscillator length
+along the x-direction <cite>a_x</cite>. The dominant energy scale is the harmonic
+trapping energy along the x-direction [hbar * <cite>omeg[‘x’]</cite>].</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.paths">
+<span class="sig-name descname"><span class="pre">paths</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Essential paths and directory names for a given trial.</p>
+<ul class="simple">
+<li><p>‘folder’ : The name of the topmost trial directory.</p></li>
+<li><p>‘data’ : Path to the simulation data &amp; results.</p></li>
+<li><p>‘code’ : Path to the subdirectory containing the trial code.</p></li>
+<li><p>‘trial’ : Path to the subdirectory containing raw trial data.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.atom_num">
+<span class="sig-name descname"><span class="pre">atom_num</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.atom_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total atom number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.space">
+<span class="sig-name descname"><span class="pre">space</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spatial arrays, meshes, spacings, volume elements, and sizes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="5"><p><strong>KEYS</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Arrays:</p></td>
+<td><p>‘x’</p></td>
+<td><p>‘y’</p></td>
+<td><p>‘kx’</p></td>
+<td><p>‘ky’</p></td>
+</tr>
+<tr class="row-odd"><td><p>Meshes:</p></td>
+<td><p>‘x_mesh’</p></td>
+<td><p>‘y_mesh’</p></td>
+<td><p>‘kx_mesh’</p></td>
+<td><p>‘ky_mesh’</p></td>
+</tr>
+<tr class="row-even"><td><p>Spacings:</p></td>
+<td colspan="2"><p>‘dr’</p></td>
+<td colspan="2"><p>‘dk’</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vol. elem.:</p></td>
+<td colspan="2"><p>‘dv_r’</p></td>
+<td colspan="2"><p>‘dv_k’</p></td>
+</tr>
+<tr class="row-even"><td><p>Sizes:</p></td>
+<td colspan="2"><p>‘r_sizes’</p></td>
+<td colspan="2"><p>‘k_sizes’</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other:</p></td>
+<td colspan="4"><p>‘mesh_points’</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.pop_frac">
+<span class="sig-name descname"><span class="pre">pop_frac</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.pop_frac" title="Permalink to this definition">¶</a></dt>
+<dd><p>The initial population fraction in each spin component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.omeg">
+<span class="sig-name descname"><span class="pre">omeg</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.omeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Angular trapping frequencies, {‘x’, ‘y’, ‘z’}. omeg[‘x’] multiplied
+by \hbar is the characteristic energy scale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.g_sc">
+<span class="sig-name descname"><span class="pre">g_sc</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.g_sc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relative scattering interaction strengths, {‘uu’, ‘dd’, ‘ud’}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.a_x">
+<span class="sig-name descname"><span class="pre">a_x</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.a_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Harmonic oscillator length along the x-axis; this is the
+characteristic length scale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.chem_pot">
+<span class="sig-name descname"><span class="pre">chem_pot</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.chem_pot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chemical potential, [\hbar * omeg[‘x’]].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.rad_tf">
+<span class="sig-name descname"><span class="pre">rad_tf</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.rad_tf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thomas-Fermi radius along the x-axis, [a_x].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.time_scale">
+<span class="sig-name descname"><span class="pre">time_scale</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.time_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse x-axis trapping frequency - the characteristic time scale,
+[1 / omeg[‘x’]].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.pot_eng_spin">
+<span class="sig-name descname"><span class="pre">pot_eng_spin</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.pot_eng_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D potential energy grids for each spin component,
+[\hbar * omeg[‘x’]].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.kin_eng_spin">
+<span class="sig-name descname"><span class="pre">kin_eng_spin</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.kin_eng_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D kinetic energy grids for each spin component,
+[\hbar * omeg[‘x’]].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.psi">
+<span class="sig-name descname"><span class="pre">psi</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.psi" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D real-space spin component wavefunctions; generally
+complex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.psik">
+<span class="sig-name descname"><span class="pre">psik</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.psik" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D momentum-space spin component wavefunctions;
+generally complex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.is_coupling">
+<span class="sig-name descname"><span class="pre">is_coupling</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.is_coupling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signals the presence of direct coupling between spin components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.kL_recoil">
+<span class="sig-name descname"><span class="pre">kL_recoil</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.kL_recoil" title="Permalink to this definition">¶</a></dt>
+<dd><p>The value of the single-photon recoil momentum, [1 / a_x].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.EL_recoil">
+<span class="sig-name descname"><span class="pre">EL_recoil</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.EL_recoil" title="Permalink to this definition">¶</a></dt>
+<dd><p>The energy scale corresponding to the single-photon recoil momentum,
+[1 / omeg[‘x’]].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.rand_seed">
+<span class="sig-name descname"><span class="pre">rand_seed</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.rand_seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value to seed the pseudorandom number generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.prop">
+<span class="sig-name descname"><span class="pre">prop</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object containing the results of propagation, along with analysis
+methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PropResult</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.rot_coupling">
+<span class="sig-name descname"><span class="pre">rot_coupling</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.rot_coupling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Option to place coupling in a rotating reference frame, i.e. no
+momentum shift on the coupling operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.compute_energy_grids">
+<span class="sig-name descname"><span class="pre">compute_energy_grids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.compute_energy_grids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the initial potential and kinetic energy grids.</p>
+<p>Assumes that the BEC is in a harmonic trap. This harmonic potential
+determines the initial ‘Thomas-Fermi’ density profile of the BEC.
+<code class="docutils literal notranslate"><span class="pre">pot_eng</span></code> can be modified prior to progation to have any arbitrary
+potential energy landscape.</p>
+<p>Also assumes that the BEC has a simple free-particle kinetic energy
+dispersion. If using a momentum-dependent spin coupling, this grid
+will be modified later.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.compute_spatial_grids">
+<span class="sig-name descname"><span class="pre">compute_spatial_grids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(256,</span> <span class="pre">256)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(16,</span> <span class="pre">16)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.compute_spatial_grids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the real and momentum space grids.</p>
+<p>Stored in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> <cite>space</cite> are the real- and momentum-space
+mesh grids, mesh sizes, mesh spacings, volume elements, and the
+corresponding linear arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh_points</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default=(256, 256)) – The number of grid points along the x- and y-axes, respectively.</p></li>
+<li><p><strong>r_sizes</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default=(16, 16)) – The half size of the grid along the real x- and y-axes,
+respectively,in units of [a_x].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.compute_tf_params">
+<span class="sig-name descname"><span class="pre">compute_tf_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rb87'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.compute_tf_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute parameters and scales for the Thomas-Fermi solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sepecies</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’Rb87’) – Designates the atomic species and corresponding physical data
+used in the simulations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.compute_tf_psi">
+<span class="sig-name descname"><span class="pre">compute_tf_psi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.compute_tf_psi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the intial pseudospinor wavefunction <cite>psi</cite> and FFT <cite>psik</cite>.</p>
+<p>The psuedospinor wavefunction <cite>psi</cite> that is generated is a <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>
+of 2D NumPy arrays. The Thomas-Fermi solution is real and has the
+form of an inverted parabaloid. <cite>psik</cite> is a <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of the 2D FFT
+of <cite>psi</cite>’s components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>phase_factor</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">complex</span></code>, default=1.0) – Unit complex number; initial relative phase factor between the two
+spin components.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.coupling">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">coupling</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <cite>coupling</cite> attribute.</p>
+<p>2D coupling array [\hbar * omeg[‘x’]].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad">
+<span class="sig-name descname"><span class="pre">coupling_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a linear gradient of the interspin coupling strength.</p>
+<p>Convenience function for generating linear gradients of the coupling.
+<cite>coupling</cite> can also be set to any arbitrary NumPy array directly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span> <span class="o">=</span> <span class="n">PSpinor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">coupling_setup</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">coupling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ps</span><span class="o">.</span><span class="n">x_mesh</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Gaussian function</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When working with Raman recoil units [E_L], they will first
+need to be converted to [hbar*omeg_x] units.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slope</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The slope of the coupling gradient, in [hbar*omeg_x/a_x].</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The origin offset of the coupling gradient, in [hbar*omeg_x].</p></li>
+<li><p><strong>axis</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The axis along which the coupling gradient runs.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.coupling_setup">
+<span class="sig-name descname"><span class="pre">coupling_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.901e-07</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kin_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate parameters for the momentum-(in)dependent coupling.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">kin_shift=True</span></code>, the kinetic energy grid receives a
+spin-dependent shift in momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavel</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=790.1e-9) – Wavelength of Raman coupling. Note that you must specify the
+wavelength in meters.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – The relative scale of recoil momentum. Interesting physics may be
+simulated by considering a recoil momentum that is hypothetically
+much larger or much smaller than the native wavelength recoil
+momentum.</p></li>
+<li><p><strong>kin_shift</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=False) – Option for a momentum-(in)dependent coupling.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.coupling_uniform">
+<span class="sig-name descname"><span class="pre">coupling_uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling_uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a uniform interspin coupling strength.</p>
+<p>Convenience function for generating unirom gradients of the coupling.
+<cite>coupling</cite> can also be set to any arbitrary NumPy array directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The value of the coupling, in [hbar*omega_x].</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad" title="spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coupling_grad</span></code></a></dt><dd><p>Coupling gradient</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.detuning">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">detuning</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.detuning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <cite>detuning</cite> attribute.</p>
+<p>2D detuning array [\hbar * omeg[‘x’]].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.detuning_grad">
+<span class="sig-name descname"><span class="pre">detuning_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.detuning_grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a linear gradient of the interspin coupling strength.</p>
+<p>Convenience function for generating linear gradients of the coupling.
+<cite>detuning</cite> can also be set to any arbitrary NumPy array directly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span> <span class="o">=</span> <span class="n">PSpinor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">coupling_setup</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">detuning</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">ps</span><span class="o">.</span><span class="n">x_mesh</span><span class="p">)</span>  <span class="c1"># Sin function</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>when working with Raman recoil units [E_L], they will first
+need to be converted to [hbar*omeg_x] units.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slope</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The slope of the detuning gradient, in [hbar*omeg_x/a_x].</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The origin offset of the detuning gradient, in [hbar*omeg_x].</p></li>
+<li><p><strong>axis</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The axis along which the detuning gradient runs.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad" title="spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coupling_grad</span></code></a></dt><dd><p>Coupling gradient</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.detuning_uniform">
+<span class="sig-name descname"><span class="pre">detuning_uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.detuning_uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a uniform coupling detuning.</p>
+<p>Convenience function for generating unirom gradients of the coupling.
+<cite>detuning</cite> can also be set to any arbitrary NumPy array directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The value of the coupling, in [hbar*omega_x].</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad" title="spinor_gpe.pspinor.pspinor.PSpinor.coupling_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coupling_grad</span></code></a></dt><dd><p>Coupling gradient</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.imaginary">
+<span class="sig-name descname"><span class="pre">imaginary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.imaginary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform imaginary-time propagation.</p>
+<p>Propagation is carried out in a <cite>TensorPropagator</cite> object. The
+results are stored and returned in the <cite>PropResult</cite> object for further
+analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_step</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The propagation time step.</p></li>
+<li><p><strong>n_steps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The total number of propagation steps.</p></li>
+<li><p><strong>device</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – {‘cpu’, ‘cuda’}</p></li>
+<li><p><strong>is_sampling</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Option to sample wavefunctions throughout the propagation.</p></li>
+<li><p><strong>n_samples</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The number of samples to collect.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.kin_eng">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">kin_eng</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.kin_eng" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <cite>kin_eng</cite> attribute.</p>
+<p>2D kinetic energy grid, [\hbar * omeg[‘x’]]0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.no_coupling_setup">
+<span class="sig-name descname"><span class="pre">no_coupling_setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.no_coupling_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide the default parameters for no coupling.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.plot_kdens">
+<span class="sig-name descname"><span class="pre">plot_kdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psik</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.plot_kdens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the momentum-space density of the wavefunction.</p>
+<p>Shows the momentum-space density of either the up (<cite>spin=0</cite>),
+down (<cite>spin=1</cite>), or both (<cite>spin=None</cite>) spin components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The wavefunction to plot. If no <cite>psik</cite> is supplied, then it uses
+the object attribute <cite>self.psik</cite>.</p></li>
+<li><p><strong>spin</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <cite>None</cite>, optional) – Which spin to plot. <cite>None</cite> plots both spins. 0 or 1 plots only the
+up or down spin, respectively.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – The matplotlib colormap to use for the plots.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – A factor by which to scale the spatial dimensions, e.g. Thomas-
+Fermi radius.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotting_tools.plot_dens</span></code></dt><dd><p>Density plots.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.plot_rdens">
+<span class="sig-name descname"><span class="pre">plot_rdens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.plot_rdens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the real-space density of the wavefunction.</p>
+<p>Shows the real-space density of either the up (<cite>spin=0</cite>),
+down (<cite>spin=1</cite>), or both (<cite>spin=None</cite>) spin components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The wavefunction to plot. If no <cite>psi</cite> is supplied, then it uses the
+object attribute <cite>self.psi</cite>.</p></li>
+<li><p><strong>spin</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <cite>None</cite>, optional) – Which spin to plot. <cite>None</cite> plots both spins. 0 or 1 plots only the
+up or down spin, respectively.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – The matplotlib colormap to use for the plots.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – A factor by which to scale the spatial dimensions, e.g. Thomas-
+Fermi radius.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotting_tools.plot_dens</span></code></dt><dd><p>Density plots.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.plot_rphase">
+<span class="sig-name descname"><span class="pre">plot_rphase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'twilight_shifted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.plot_rphase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the real-space phase of the wavefunction.</p>
+<p>Shows the real-space phase of either the up (<cite>spin=0</cite>),
+down (<cite>spin=1</cite>), or both (<cite>spin=None</cite>) spin components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The wavefunction to plot. If no <cite>psi</cite> is supplied, then it uses
+the object attribute <cite>self.psi</cite>.</p></li>
+<li><p><strong>spin</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <cite>None</cite>, optional) – Which spin to plot. <cite>None</cite> plots both spins. 0 or 1 plots only the
+up or down spin, respectively.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’twilight_shifted’) – The matplotlib colormap to use for the plots.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – A factor by which to scale the spatial dimensions, e.g. Thomas-
+Fermi radius.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotting_tools.plot_phase</span></code></dt><dd><p>Phase plots.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.plot_spins">
+<span class="sig-name descname"><span class="pre">plot_spins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.pdf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.plot_spins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the densities (both real &amp; k) and phases of spin components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – Real-space length scale. The default of 1.0 corresponds to the
+naturatl harmonic length scale along the x-axis.</p></li>
+<li><p><strong>kscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – Momentum-space length scale. The default of 1.0 corresponds to the
+inverse harmonic length scale along the x-axis.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – Color map name for the real- and momentum-space density plots.</p></li>
+<li><p><strong>save</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Saves the figure as a .pdf file (default). The filename has the
+format “/<cite>data_path</cite>/pop_evolution%s-<cite>trial_name</cite>.pdf”.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – Saved plot image file extension.</p></li>
+<li><p><strong>zoom</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – A zoom factor for the k-space density plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.pot_eng">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pot_eng</span></span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.pot_eng" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <cite>pot_eng</cite> attribute.</p>
+<p>2D potential energy grid, [\hbar * omeg[‘x’]].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.real">
+<span class="sig-name descname"><span class="pre">real</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.real" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform real-time propagation.</p>
+<p>Propagation is carried out in a <cite>TensorPropagator</cite> object. The
+results are stored and returned in the <cite>PropResult</cite> object for further
+analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_step</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The propagation time step.</p></li>
+<li><p><strong>n_steps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The total number of propagation steps.</p></li>
+<li><p><strong>device</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – {‘cpu’, ‘cuda’}</p></li>
+<li><p><strong>is_sampling</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Option to sample wavefunctions throughout the propagation.</p></li>
+<li><p><strong>n_samples</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The number of samples to collect.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.seed_random_vortices">
+<span class="sig-name descname"><span class="pre">seed_random_vortices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.seed_random_vortices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seed randomly-arranged vortices into the wavefunction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.seed_regular_vortices">
+<span class="sig-name descname"><span class="pre">seed_regular_vortices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.seed_regular_vortices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seed regularly-arranged vortices into the wavefunction.</p>
+<p>These seed-vortex functions might be moved to the ttools module.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.seed_vortices">
+<span class="sig-name descname"><span class="pre">seed_vortices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.seed_vortices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seeds vortices at the positions specified.</p>
+<p>Pass a list of tuple coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>positions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code>) – The positions at which to seed the vortices.</p></li>
+<li><p><strong>windings</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Must have values of +1 or -1. If a single <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>
+is supplied, all vortices will have the same winding.
+If a <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> is supplied, it must have the same
+length as <cite>positions</cite>.</p></li>
+<li><p><strong>TODO</strong> (<em>#</em>) – </p></li>
+<li><p><strong>component.</strong> (<em># in each spinor</em>) – </p></li>
+<li><p><strong>???</strong> (<em>#</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.setup_data_path">
+<span class="sig-name descname"><span class="pre">setup_data_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.setup_data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create new data directory to store simulation data &amp; results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the directory to save the simulation. If <cite>path</cite>
+does not represent an absolute path, then the data is stored
+in spinor-gpe/data/<cite>path</cite>.</p></li>
+<li><p><strong>overwrite</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Gives the option to overwrite existing data sub-directories</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.pspinor.PSpinor.shift_momentum">
+<span class="sig-name descname"><span class="pre">shift_momentum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psik</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.5,</span> <span class="pre">0.5)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.pspinor.PSpinor.shift_momentum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shifts momentum components of <cite>psi</cite> by a fracion of +/- kL_recoil.</p>
+<p>The ground-state solutions of Raman-coupled spinor systems in general
+have spinor components with both left- and right-moving momentum
+peaks. Providing a manual shift on the momentum-space wavefunction
+components better approximates these solutions, i.e. faster convergence
+in imaginary time propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The momentum-space pseudospinor wavefunction. If <cite>psik</cite> is not
+provided, then this function uses the current class attribute
+<cite>self.psik</cite>.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – By default, the function shifts the momentum peaks by a single
+unit of recoil momenta <cite>kL_recoil</cite>. <cite>scale</cite> gives the option of
+scaling the shift larger or smaller for faster convergence.</p></li>
+<li><p><strong>frac</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code>, default=(0.5, 0.5)) – The fraction of each spinor component’s momentum peak to shift in
+either direction. frac=(0.5, 0.5) splits into two equal peaks,
+while (0.0, 1.0) and (1.0, 0.0) move the entire peak one
+direction or the other.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="pspinor-tensor-propagator-module">
+<h2>pspinor.tensor_propagator module<a class="headerlink" href="#pspinor-tensor-propagator-module" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_propagator.</span></span><span class="sig-name descname"><span class="pre">TensorPropagator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'imag'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>CPU- or GPU-compatible propagator of the GPE, with tensors.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.n_steps">
+<span class="sig-name descname"><span class="pre">n_steps</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.n_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total number of full time steps in propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.device" title="Permalink to this definition">¶</a></dt>
+<dd><p>The computing device on which propagation is performed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.paths">
+<span class="sig-name descname"><span class="pre">paths</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.t_step">
+<span class="sig-name descname"><span class="pre">t_step</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.t_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duration of the full time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">complex</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.dt_out">
+<span class="sig-name descname"><span class="pre">dt_out</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.dt_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duration of the outer time sub-step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">complex</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.dt_in">
+<span class="sig-name descname"><span class="pre">dt_in</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.dt_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duration of the inner time sub-step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">complex</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.rand_seed">
+<span class="sig-name descname"><span class="pre">rand_seed</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.rand_seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.is_sampling">
+<span class="sig-name descname"><span class="pre">is_sampling</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.is_sampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Option to sample the wavefunction periodically throughout propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.atom_num">
+<span class="sig-name descname"><span class="pre">atom_num</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.atom_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.is_coupling">
+<span class="sig-name descname"><span class="pre">is_coupling</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.is_coupling" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.g_sc">
+<span class="sig-name descname"><span class="pre">g_sc</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.g_sc" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <cite>pspinor.Pspinor</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.kin_eng_spin">
+<span class="sig-name descname"><span class="pre">kin_eng_spin</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.kin_eng_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.pot_eng_spin">
+<span class="sig-name descname"><span class="pre">pot_eng_spin</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.pot_eng_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.psik">
+<span class="sig-name descname"><span class="pre">psik</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.psik" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <cite>pspinor.Pspinor</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.space">
+<span class="sig-name descname"><span class="pre">space</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.space" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>See <cite>pspinor.Pspinor</cite>. Contains only keys:</dt><dd><p>{‘dr’, ‘dk’, ‘x_mesh’, ‘y_mesh’, ‘dv_r’, ‘dv_k’}</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.coupling">
+<span class="sig-name descname"><span class="pre">coupling</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.coupling" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <cite>pspinor.Pspinor</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.kL_recoil">
+<span class="sig-name descname"><span class="pre">kL_recoil</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.kL_recoil" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.Pspinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.expon">
+<span class="sig-name descname"><span class="pre">expon</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.expon" title="Permalink to this definition">¶</a></dt>
+<dd><p>The exponential argument on the coupling operator off-diagonals. If
+the coupling is in a rotated reference frame, then <a href="#id1"><span class="problematic" id="id2">`</span></a>expon`=0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.sample_rate">
+<span class="sig-name descname"><span class="pre">sample_rate</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.sample_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>How often wavefunctions are sampled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.eng_out">
+<span class="sig-name descname"><span class="pre">eng_out</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.eng_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-computed energy evolution operators for the outer time sub-step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.eng_in">
+<span class="sig-name descname"><span class="pre">eng_in</span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.eng_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-computed energy evolution operators for the inner time sub-step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.eng_expect">
+<span class="sig-name descname"><span class="pre">eng_expect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psik</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.eng_expect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the energy expectation value of the wavefunction.</p>
+<p>To calculate the kinetic energy potion of the energy expectation value,
+spatial gradients of the phase and square root density must be
+obtained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>) – The k-space representation of wavefunction to evaluate.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>While spatial gradients of the wavefunction’s phase can be computed
+with PyTorch tensors, there is currently not an implementation of the
+2D phase-unwrapping algorithm. For this this reason, the energy
+expectation value needs to be computed with NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">arrays</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.full_step">
+<span class="sig-name descname"><span class="pre">full_step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.full_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Full step forward in real or imaginary time.</p>
+<p>For accuracy, divide the full propagation step into three single steps
+using the magic gamma time steps.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.prop_loop">
+<span class="sig-name descname"><span class="pre">prop_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_steps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.prop_loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the propagation steps in a for-loop.</p>
+<p>Saves the spin populations at every time step. If wavefunctions are
+sampled throughout the propagation, they are saved with the associated
+sampled times in <cite>trial_data/psik_sampled%s_`folder_name</cite>.npz.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_steps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The number of propagation steps.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result</strong> – Contains the propagation results and analysis methods.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PropResult</span></code></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">spinor_gpe.prop_results</span></code></dt><dd><p>Propagation results</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_propagator.TensorPropagator.single_step">
+<span class="sig-name descname"><span class="pre">single_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eng</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_propagator.TensorPropagator.single_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single step forward in real or imaginary time with spectral method.</p>
+<p>The kinetic, interaction, and coupling time-evolution operators are
+symmetrically split into two half-single steps around the full-single
+step potential energy operator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_step</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The sub-time step.</p></li>
+<li><p><strong>eng</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – The kinetic and potential energy evolution operators corresponding
+to the given sub-time step.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="pspinor-prop-result-module">
+<h2>pspinor.prop_result module<a class="headerlink" href="#pspinor-prop-result-module" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.prop_result.</span></span><span class="sig-name descname"><span class="pre">PropResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_final</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psik_final</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eng_final</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pops</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The result of propagation, with plotting and analysis tools.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.psi">
+<span class="sig-name descname"><span class="pre">psi</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.psi" title="Permalink to this definition">¶</a></dt>
+<dd><p>The final real-space wavefunctions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.psik">
+<span class="sig-name descname"><span class="pre">psik</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.psik" title="Permalink to this definition">¶</a></dt>
+<dd><p>The final momentum-space wavefunctions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.eng_final">
+<span class="sig-name descname"><span class="pre">eng_final</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.eng_final" title="Permalink to this definition">¶</a></dt>
+<dd><p>The energy expectation values: [&lt;total&gt;, &lt;kin.&gt;, &lt;pot.&gt;, &lt;int.&gt;].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.pops">
+<span class="sig-name descname"><span class="pre">pops</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.pops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Times and populations at every time step, {‘times’, ‘vals’}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.sampled_path">
+<span class="sig-name descname"><span class="pre">sampled_path</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.sampled_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to the .npz file where the sampled wavefunctions and times are
+stored for this result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.dens">
+<span class="sig-name descname"><span class="pre">dens</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.dens" title="Permalink to this definition">¶</a></dt>
+<dd><p>The final real-space densities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.densk">
+<span class="sig-name descname"><span class="pre">densk</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.densk" title="Permalink to this definition">¶</a></dt>
+<dd><p>The final momentum-space densities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.phase">
+<span class="sig-name descname"><span class="pre">phase</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>The final real-space phases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.paths">
+<span class="sig-name descname"><span class="pre">paths</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.PSpinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.time_scale">
+<span class="sig-name descname"><span class="pre">time_scale</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.time_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">pspinor.PSpinor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.space">
+<span class="sig-name descname"><span class="pre">space</span></span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <code class="docutils literal notranslate"><span class="pre">tensor_propagator.TensorPropagator</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.analyze_vortex">
+<span class="sig-name descname"><span class="pre">analyze_vortex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.analyze_vortex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the total vorticity in each spin component.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.calc_separation">
+<span class="sig-name descname"><span class="pre">calc_separation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.calc_separation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the phase separation of the two spin components.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.make_movie">
+<span class="sig-name descname"><span class="pre">make_movie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">play</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.make_movie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a movie of the wavefunctions’ densities and phases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – Real-space length scale. The default of 1.0 corresponds to the
+naturatl harmonic length scale along the x-axis.</p></li>
+<li><p><strong>kscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – Momentum-space length scale. The default of 1.0 corresponds to the
+inverse harmonic length scale along the x-axis.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – Color map name for the real- and momentum-space density plots.</p></li>
+<li><p><strong>play</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=False) – If True, the movie is opened in the computer’s default media
+player after it is saved.</p></li>
+<li><p><strong>kzoom</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – A zoom factor for the k-space density plot.</p></li>
+<li><p><strong>norm_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – {‘all’, ‘half’} Normalizes the colormaps to the full or half sum
+of the max densites. ‘half’ is useful for visualizing situations
+where the population is equally divided between the two spins.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.plot_eng">
+<span class="sig-name descname"><span class="pre">plot_eng</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.plot_eng" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the sampled energy expectation values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.plot_pops">
+<span class="sig-name descname"><span class="pre">plot_pops</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scaled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.pdf'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.plot_pops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the spin populations as a function of propagation time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scaled</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – If <cite>scaled</cite> is True then the time-axis will be rescaled into
+proper time units. Otherwise, it’s left in dimensionless time
+units.</p></li>
+<li><p><strong>save</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Saves the figure as a .pdf file (default). The filename has the
+format “/<cite>data_path</cite>/pop_evolution%s-<cite>trial_name</cite>.pdf”.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – File extension for the saved plot image.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.plot_spins">
+<span class="sig-name descname"><span class="pre">plot_spins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.pdf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.plot_spins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the densities (real &amp; k) and phases of spin components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – Real-space length scale. The default of 1.0 corresponds to the
+naturatl harmonic length scale along the x-axis.</p></li>
+<li><p><strong>kscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – Momentum-space length scale. The default of 1.0 corresponds to the
+inverse harmonic length scale along the x-axis.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – Matplotlib color map name for the real- and momentum-space
+density plots.</p></li>
+<li><p><strong>save</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=True) – Saves the figure as a .pdf file (default). The filename has the
+format “/<cite>data_path</cite>/spin_dens_phase%s-<cite>trial_name</cite>.pdf”.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’.pdf’) – File extension for the saved plot image.</p></li>
+<li><p><strong>zoom</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – A zoom factor for the k-space density plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.plot_total">
+<span class="sig-name descname"><span class="pre">plot_total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.pdf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.plot_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the total real-space density and phase of the wavefunction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – Real-space length scale. The default of 1.0 corresponds to the
+naturatl harmonic length scale along the x-axis.</p></li>
+<li><p><strong>kscale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – Momentum-space length scale. The default of 1.0 corresponds to the
+inverse harmonic length scale along the x-axis.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – Color map name for the real- and momentum-space density plots.</p></li>
+<li><p><strong>save</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=True) – Saves the figure as a .pdf file (default). The filename has the
+format “/<cite>data_path</cite>/pop_evolution%s-<cite>trial_name</cite>.pdf”.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’.pdf’) – File extension for the saved plot image.</p></li>
+<li><p><strong>show</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=True) – Option to display the generated image.</p></li>
+<li><p><strong>zoom</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default = 1.0) – A zoom factor for the k-space density plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.prop_result.PropResult.rebin">
+<span class="sig-name descname"><span class="pre">rebin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(256,</span> <span class="pre">256)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.prop_result.PropResult.rebin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebin a 2D <cite>arr</cite> to shape <cite>new_shape</cite> by averaging.</p>
+<p>This may be used when generating movies of sampled wavefunctions.
+By down-sampling the density grids, the movie is generated much faster.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (2D <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> or NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>) – The input 2D array to rebin.</p></li>
+<li><p><strong>new_shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code>, default=(256, 256)) – The target rebinned shape.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-spinor_gpe.pspinor.tensor_tools">
+<span id="pspinor-tensor-tools-module"></span><h2>pspinor.tensor_tools module<a class="headerlink" href="#module-spinor_gpe.pspinor.tensor_tools" title="Permalink to this headline">¶</a></h2>
+<p>tensor_tools.py module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.calc_atoms">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">calc_atoms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_elem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.calc_atoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the total number of atoms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input spinor wavefunction.</p></li>
+<li><p><strong>vol_elem</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – 2D volume element of the space.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>atom_num</strong> – The total atom number in both spin components.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.calc_pops">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">calc_pops</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_elem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.calc_pops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the populations in each spin component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input spinor wavefunction.</p></li>
+<li><p><strong>vol_elem</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – 2D volume element of the space.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pops</strong> – The atom number in each spin component.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.conj">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">conj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.conj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complex conjugate of a complex tensor.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.conj_comp">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">conj_comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_comp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.conj_comp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complex conjugate of a single wavefunction component.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.coupling_op">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">coupling_op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">tensor(0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.coupling_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the time-evolution operator for the coupling term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_step</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Sub-time step.</p></li>
+<li><p><strong>coupling</strong> (2D PyTorch complex <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>, optional.) – The coupling mesh. Default is none if <cite>self.is_coupling = False</cite>.
+In this case, the evolution operator returned will the identity
+matrix.</p></li>
+<li><p><strong>expon</strong> (2D PyTorch real <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>, optional.) – The exponential argument in the bare coupling term. If there is
+no coupling, then this is 0 by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>coupl_ev_op</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2D PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>, optional.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.density">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the density of a spinor wavefunction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input spinor wavefunction.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dens</strong> – The density of each component’s wavefunction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> thereof</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.evolution_op">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">evolution_op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.evolution_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the unitary time-evolution operator for the given energy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> – </p></li>
+<li><p><strong>time_step</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.expect_val">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">expect_val</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.expect_val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the expectation value of the supplied spatial operator.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.fft_1d">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">fft_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.fft_1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the forward 1D FFT of <cite>psi</cite> along a single axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input wavefunction.</p></li>
+<li><p><strong>delta_r</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, default=(1,1)) – A two-element list of the real-sapce x- and y-mesh spacings,
+respectively.</p></li>
+<li><p><strong>axis</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default=0) – The axis along which to transform; note that 0 -&gt; y-axis, and
+1 -&gt; x-axis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psik_axis</strong> – The FFT of psi along <cite>axis</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.fft_2d">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">fft_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.fft_2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the forward 2D FFT of <cite>psi</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input wavefunction.</p></li>
+<li><p><strong>delta_r</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, default=(1,1)) – A two-element list of the real-space x- and y-mesh spacings,
+respectively. Typically, use <cite>ps.space[‘dr’]</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psik</strong> – The k-space FFT of the input wavefunction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.grad">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the spatial gradient of a wavefunction <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> – </p></li>
+<li><p><strong>delta_r</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.grad_comp">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">grad_comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.grad_comp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spatial gradient of a single wavefunction component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>TypeError</strong> – If <cite>psi_comp</cite> is neither an <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> of the
+    correct shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.grad_sq">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">grad_sq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.grad_sq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the gradient squared of a wavefunction.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.grad_sq_comp">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">grad_sq_comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.grad_sq_comp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a list of tensors or np arrays; checks type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.ifft_1d">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">ifft_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.ifft_1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the inverse 1D FFT of <cite>psi</cite> along a single axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input wavefunction.</p></li>
+<li><p><strong>delta_r</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, default=(1,1)) – A two-element list of the real-sapce x- and y-mesh spacings,
+respectively.</p></li>
+<li><p><strong>axis</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default=0) – The axis along which to transform; note that 0 -&gt; x-axis, and
+1 -&gt; y-axis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psi_axis</strong> – The FFT of psi along <cite>axis</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.ifft_2d">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">ifft_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.ifft_2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the inverse 2D FFT of <cite>psik</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input wavefunction.</p></li>
+<li><p><strong>delta_r</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, default=(1,1)) – A two-element list of the real-sapce x- and y-mesh spacings,
+respectively. Typically, use <cite>ps.space[‘dr’]</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psi</strong> – The real-space FFT of the input wavefunction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.inner_prod">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">inner_prod</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.inner_prod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the inner product of two wavefunctions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.norm">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol_elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atom_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pop_frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize spinor wavefunction to the expected atom numbers and populations.</p>
+<p>This function normalizes to the total expected atom number <cite>atom_num</cite>,
+and to the expected population fractions <cite>pop_frac</cite>. Normalization is
+essential in processes where the total atom number is not conserved,
+(e.g. imaginary time propagation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">arrays</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensors</span></code>.) – The wavefunction to normalize.</p></li>
+<li><p><strong>vol_elem</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Volume element for either real- or k-space.</p></li>
+<li><p><strong>atom_num</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The total expected atom number.</p></li>
+<li><p><strong>pop_frac</strong> (<em>array-like</em><em>, </em><em>optional</em>) – The expected population fractions in each spin component.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>psi_norm</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">arrays</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensors</span></code>.) – The normalized wavefunction.</p></li>
+<li><p><strong>dens_norm</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">arrays</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensors</span></code>.) – The densities of the normalized wavefunction’s components</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.norm_sq">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">norm_sq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_comp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.norm_sq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the density (norm-squared) of a single wavefunction component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psi_comp</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – A single wavefunction component.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psi_sq</strong> – The norm-square of the wavefunction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If <cite>psi_comp</cite> is neither an <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> of the
+    correct shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.phase">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uwrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the phase of a real-space spinor wavefunction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of 2D NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – The input spinor wavefunction.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>phase</strong> – The phase of each component’s wavefunction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> thereof</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.phase_comp">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">phase_comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uwrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.phase_comp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the phase (angle) of a single complex wavefunction component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>psi_comp</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – A single wavefunction component.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>angle</strong> – The phase (angle) of the component’s wavefunction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.prod">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">prod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.prod" title="Permalink to this definition">¶</a></dt>
+<dd><p>General function for multiplying the elements of a 1D data structure.</p>
+<p>Operates similar to the <cite>sum</cite> function from the standard library.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.to_cpu">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">to_cpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.to_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfers <cite>input_tens</cite> from GPU to CPU memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_tens</strong> (PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – Input tensor stored on GPU memory.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>output_tens</strong> – Output tensor stored on CPU memory.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.to_gpu">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">to_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cuda'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.to_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfers <cite>input_tens</cite> from CPU to GPU memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tens</strong> (PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – Input tensor stored on GPU memory.</p></li>
+<li><p><strong>dev</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’cuda’) – The name of the device on which to store the tensor,
+e.g. {‘cuda’, ‘cuda:0’}</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>output_tens</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.to_numpy">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.to_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert from PyTorch Tensor to NumPy arrays.</p>
+<p>Accepts a single PyTorch Tensor, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch Tensor,
+as in the wavefunction objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_tens</strong> (PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>) – Input tensor, or list of tensor, to be converted to <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>,
+on CPU memory.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>output_arr</strong> – Output array stored on CPU memory.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.tensor_tools.to_tensor">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.tensor_tools.</span></span><span class="sig-name descname"><span class="pre">to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.tensor_tools.to_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert from NumPy arrays to Tensors.</p>
+<p>Accepts a single NumPy array, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy arrays, as in the
+wavefunction objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_arr</strong> (NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>,  or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of NumPy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>) – Input array, or list of arrays, to be converted to a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code>,
+on either CPU or GPU memory.</p></li>
+<li><p><strong>dev</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’cpu’) – The name of the device on which to store the tensor,
+e.g. {‘cpu’, ‘cuda’, ‘cuda:0’}</p></li>
+<li><p><strong>dtype</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, default=64) – <p>Designator for the torch dtype -</p>
+<ul>
+<li><p>32  : <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.float32</span></code>;</p></li>
+<li><p>64  : <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.float64</span></code>;</p></li>
+<li><p>128 : <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.complex128</span></code></p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>output_tens</strong> – Output tensor of <cite>dtype</cite> stored on <cite>dev</cite> memory.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of PyTorch <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spinor_gpe.pspinor.plotting_tools">
+<span id="pspinor-plotting-tools-module"></span><h2>pspinor.plotting_tools module<a class="headerlink" href="#module-spinor_gpe.pspinor.plotting_tools" title="Permalink to this headline">¶</a></h2>
+<p>plotting_tools.py module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.next_available_path">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">next_available_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.next_available_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test for the next available path for a given file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The base file path to test.</p></li>
+<li><p><strong>trial_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the trial to append to the end of the file name.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’’) – File extention.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>test_path</strong> – The file path with the next available index.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.plot_dens">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">plot_dens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.plot_dens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the real or k-space density of the wavefunction.</p>
+<p>Based on the value of the <cite>spin</cite> parameter, this function will plot either
+the up (0), down (1), or both (None) spin components of the spinor
+wavefunction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The wavefunction to plot. If no <cite>psi</cite> is supplied, then it uses the
+object attribute <cite>self.psi</cite>.</p></li>
+<li><p><strong>spin</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <cite>None</cite>, optional) – Which spin to plot. <cite>None</cite> plots both spins. 0 or 1 plots only the
+up or down spin, respectively.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – The matplotlib colormap to use for the plots.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – A factor to scale the spatial dimensions by, e.g. Thomas-Fermi radius.</p></li>
+<li><p><strong>extent</strong> (<em>iterable</em>) – The spatial extent of the wavefunction components, in the format
+np.array([x_min, x_max, y_min, y_max]). Determines the natural spatial
+scale of the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.plot_phase">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">plot_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'twilight_shifted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.plot_phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the phase of the real wavefunction.</p>
+<p>Based on the value of the <cite>spin</cite> parameter, this function will plot either
+the up (0), down (1), or both (None) spin components of the spinor
+wavefunction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The wavefunction to plot.</p></li>
+<li><p><strong>spin</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <cite>None</cite>, optional) – Which spin to plot. <cite>None</cite> plots both spins. 0 or 1 plots only the
+up or down spin, respectively.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – The colormap to use for the plots.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – A factor to scale the spatial dimensions by, e.g. Thomas-Fermi radius.</p></li>
+<li><p><strong>extent</strong> (<em>iterable</em>) – The spatial extent of the wavefunction components, in the format
+np.array([x_min, x_max, y_min, y_max]). Determines the natural spatial
+scale of the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.plot_spins">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">plot_spins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.pdf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.plot_spins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the densities (real &amp; k) and phases of spin components.</p>
+<p>In total, six subplots are generated. Each pair of axes are stored together
+in a list, which is returned in <cite>all_plots</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The real-space wavefunction to plot.</p></li>
+<li><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The momentum-space wavefunction to plot.</p></li>
+<li><p><strong>extents</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code>) – The dictionary keys are {‘r’, ‘k’}, and each value is a 4-element
+iterables giving the x- (kx-) and y- (ky-) spatial extents of the plot
+area, e.g. [x_min, x_max, y_min, y_max]</p></li>
+<li><p><strong>paths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The dictionary keys contain {‘data’, ‘folder’}, and the values are
+absolute paths to the saved data path and its containing folder.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – Matplotlib color map name for the real- and momentum-space density
+plots.</p></li>
+<li><p><strong>save</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=True) – Saves the figure as a .pdf file (default). The filename has the
+format “/<cite>data_path</cite>/spin_dens_phase%s-<cite>trial_name</cite>.pdf”.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’.pdf’) – File extension for the saved density plots.</p></li>
+<li><p><strong>zoom</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – A zoom factor for the k-space density plot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>fig</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">plt.Figure</span></code>) – The matplotlib figure for the plot.</p></li>
+<li><p><strong>all_plots</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – The keys are {‘r’, ‘ph’, ‘k’}. Each value is a pair of
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.image.AxesImage</span></code> for both spins.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.plot_total">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">plot_total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.pdf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.plot_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the total densities and phase of the wavefunction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psi</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The real-space wavefunction to plot.</p></li>
+<li><p><strong>psik</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of Numpy <code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code>, optional.) – The momentum-space wavefunction to plot.</p></li>
+<li><p><strong>extents</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">iterable</span></code>) – The dictionary keys are {‘r’, ‘k’}, and each value is a 4-element
+iterables giving the x- (kx-) and y- (ky-) spatial extents of the plot
+area, e.g. [x_min, x_max, y_min, y_max]</p></li>
+<li><p><strong>paths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The dictionary keys contain {‘data’, ‘folder’}, and the values are
+absolute paths to the saved data path and its containing folder.</p></li>
+<li><p><strong>cmap</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’viridis’) – Matplotlib color map name for the real- and momentum-space density
+plots.</p></li>
+<li><p><strong>save</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, default=True) – Saves the figure as a .pdf file (default). The filename has the
+format “/<cite>data_path</cite>/spin_dens_phase%s-<cite>trial_name</cite>.pdf”.</p></li>
+<li><p><strong>ext</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, default=’.pdf’) – File extension for the saved density plots.</p></li>
+<li><p><strong>zoom</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, default=1.0) – A zoom factor for the k-space density plot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>fig</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">plt.Figure</span></code>) – The matplotlib figure for the plot.</p></li>
+<li><p><strong>all_plots</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.image.AxesImage</span></code>) – The keys are {‘r’, ‘ph’, ‘k’}. Each value is a separate
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.image.AxesImage</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.progress_message">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">progress_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_total</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.progress_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display an updating progress message while the animation is saving.</p>
+<p>This function produces an output similar to what the <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> package
+gives. This one works in situations where <code class="docutils literal notranslate"><span class="pre">tqdm</span></code> cannot be applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The current frame/index number in the loop.</p></li>
+<li><p><strong>n_total</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The total number of frames in the loop.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spinor_gpe.pspinor.plotting_tools.time_remaining">
+<span class="sig-prename descclassname"><span class="pre">spinor_gpe.pspinor.plotting_tools.</span></span><span class="sig-name descname"><span class="pre">time_remaining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_total</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">its</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spinor_gpe.pspinor.plotting_tools.time_remaining" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate completion time in the progress_message function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The current frame/index number in the loop.</p></li>
+<li><p><strong>n_total</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The total number of frames in the loop.</p></li>
+<li><p><strong>its</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The time in seconds between successive iterations.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spinor_gpe.pspinor">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-spinor_gpe.pspinor" title="Permalink to this headline">¶</a></h2>
+<p>Created on Fri Apr  9 13:35:19 2021</p>
+<p>&#64;author: benjamin</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="benchmarks/benchmark_prop.html" class="btn btn-neutral float-left" title="Propagation Time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Benjamin D. Smith
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

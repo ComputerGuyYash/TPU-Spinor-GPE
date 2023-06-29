@@ -1,0 +1,186 @@
+"""
+Example 2: Anisotropic Time-of-Flight
+=====================================
+
+Starts with the Thomas-Fermi solution for a highly anisotropic trap.
+Propagates in imaginary time tor reach the ground state. The trapping
+potential is suddenly removed and both components expand and experience
+an inversion of their aspect ratio throughout real time propagation.
+
+Physical Parameters
+-------------------
+.. topic:: Atom number
+
+    :math:`\\quad N_{\\rm at} = 10,000`
+
+.. topic:: Atomic mass, Rubidium-87
+
+    :math:`\\quad m = 1.4442 \\times 10^{-25}~[\\rm kg]`
+
+.. topic:: Trap frequencies
+
+    :math:`\\quad (\\omega_x, \\omega_y, \\omega_z) = 2 \\pi \\times (50, 200, 2000)~[{\\rm Hz}]`
+
+    :math:`\\quad (\\omega_x, \\omega_y, \\omega_z) = \\omega_x \\times (1, \\gamma, \\eta) = (1, 4, 40)~[\\omega_x]`
+
+.. topic:: Harmonic oscillator length, x-axis
+
+    :math:`\\quad a_x = \\sqrt{\\hbar / m \\omega_x} = 1.525~[{\\mu\\rm m}]`
+
+.. topic:: 3D scattering length, Rubidium-87
+
+    | :math:`\\quad a = 5.313~[{\\rm nm}]`
+
+    | :math:`\\quad a_{\\rm sc} = a / a_x = 0.00348~[a_x]`
+
+.. topic:: Scattering 2D scale
+
+    | :math:`\\quad g_{\\rm sc}^{2\\rm D} = \\sqrt{8\\pi\\eta}~a_{\\rm sc} = 0.1105~[\\omega_x a_x^2]`
+
+.. topic:: Scattering coupling
+
+    | :math:`\\quad (g_{\\rm uu}, g_{\\rm dd}, g_{\\rm ud}) = g_{\\rm sc}^{2 \\rm D} \\times (1, 1, 0.5)~[\\omega_x a_x^2]`
+
+.. topic:: Chemical potential
+
+    :math:`\\quad \\mu = \\sqrt{4 N_{\\rm at} a_{\\rm sc} \\gamma \\sqrt{\\eta / 2 \\pi}} = 37.508~[\\omega_x]`
+
+.. topic:: Thomas-Fermi radius
+
+    :math:`\\quad R_{\\rm TF} = \\sqrt{2 \\mu} = 8.661~[a_x]`
+
+.. topic:: Initial population fractions
+
+    :math:`\\quad (p_0, p_1) = (0.5, 0.5)`
+
+.. topic:: Raman wavelength
+
+    :math:`\\quad \\lambda_L = 790.1~[{\\rm nm}]`
+
+Numerical Parameters
+--------------------
+
+.. topic:: Number of grid points
+
+    :math:`\\quad (N_x, N_y) = (512, 512)`
+
+.. topic:: r-grid half-size
+
+    :math:`\\quad (x^{\\rm max}, y^{\\rm max}) = (32, 32)~[a_x]`
+
+.. topic:: r-grid spacing
+
+    :math:`\\quad (\\Delta x, \\Delta y) = (0.125, 0.125)~[a_x]`
+
+.. topic:: k-grid half-size
+
+    :math:`\\quad (k_x^{\\rm max}, k_y^{\\rm max}) = \\pi / (\\Delta x, \\Delta y)`
+
+    :math:`\\quad (k_x^{\\rm max}, k_y^{\\rm max}) = (25.133, 25.133)~[a_x^{-1}]`
+
+.. topic:: k-grid spacing
+
+    :math:`\\quad (\\Delta k_x, \\Delta k_y) = \\pi / (x^{\\rm max}, y^{\\rm max})`
+
+    :math:`\\quad (\\Delta k_x, \\Delta k_y) = (0.0982, 0.0982)~[a_x^{-1}]`
+
+.. topic:: Time scale
+
+    :math:`\\quad \\tau_0 = 1 / \\omega_x = 0.00318~[{\\rm s/rad}]`
+
+    :math:`\\quad \\tau_0 = 1~[\\omega_x^{-1}]`
+
+.. topic:: Time step duration, imaginary
+
+    :math:`\\quad \\Delta \\tau_{\\rm im} = 1 / 50~[-i \\tau_0]`
+
+.. topic:: Number of time steps, imaginary
+
+    :math:`\\quad N_{\\rm im} = 1000`
+
+.. topic:: Time step duration, real
+
+    :math:`\\quad \\Delta \\tau_{\\rm real} = 1 / 500~[\\tau_0]`
+
+.. topic:: Number of time steps, real
+
+    :math:`\\quad N_{\\rm real} = 1000`
+
+
+"""
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))  # Adds project root to the PATH
+
+import numpy as np
+
+from spinor_gpe.pspinor import pspinor as spin
+# sphinx_gallery_thumbnail_path = '_static/2_tof.png'
+
+
+# 1. SETUP
+
+DATA_PATH = 'examples/Trial_002'  # Default data path is in the /data/ folder
+
+FREQ = 50
+W = 2*np.pi*FREQ
+Y_SCALE = 4
+Z_SCALE = 40.0
+
+ATOM_NUM = 1e4
+OMEG = {'x': W, 'y': Y_SCALE * W, 'z': Z_SCALE * W}
+G_SC = {'uu': 1, 'dd': 1, 'ud': 0.5}
+
+ps = spin.PSpinor(DATA_PATH, overwrite=True,
+                  atom_num=ATOM_NUM,
+                  omeg=OMEG,
+                  g_sc=G_SC,
+                  phase_factor=1,  # Complex unit phase factor on down spin
+                  pop_frac=(0.5, 0.5),
+                  r_sizes=(32, 32),
+                  mesh_points=(512, 512))
+
+ps.coupling_setup(wavel=790.1e-9)
+
+ZOOM = 4  # Zooms the momentum-space density plots by a constant factor
+
+# Plot real- and momentum-space density & real-space phase of both components
+ps.plot_spins(rscale=ps.rad_tf, kscale=ps.kL_recoil, zoom=ZOOM)
+
+
+# 2. RUN (Imaginary-time)
+
+DT = 1/50
+N_STEPS = 1000
+DEVICE = 'cuda'
+ps.rand_seed = 99999
+
+# Run propagation loop:
+# - Returns `PropResult` & `TensorPropagator` objects
+res0, prop0 = ps.imaginary(DT, N_STEPS, DEVICE, is_sampling=False, n_samples=50)
+
+
+# 3. ANALYZE
+
+res0.plot_spins(rscale=ps.rad_tf, kscale=ps.kL_recoil, zoom=ZOOM)
+res0.plot_total(kscale=ps.kL_recoil, zoom=ZOOM)
+res0.plot_pops()
+
+
+# 4. RUN (Real-time)
+
+DT = 1/500
+N_STEPS = 1000
+ps.pot_eng = np.zeros_like(ps.pot_eng)  # Removes trapping potential
+
+# Run propagation loop
+res1, prop1 = ps.real(DT, N_STEPS, DEVICE, is_sampling=True, n_samples=50)
+
+
+# 5. ANALYZE
+
+res1.plot_spins(rscale=ps.rad_tf, kscale=ps.kL_recoil, zoom=ZOOM/2)
+res1.plot_total(kscale=ps.kL_recoil, zoom=ZOOM/2)
+res1.plot_pops()
+res1.make_movie(rscale=ps.rad_tf, kscale=ps.kL_recoil, play=True, zoom=ZOOM/2,
+                norm_type='half')

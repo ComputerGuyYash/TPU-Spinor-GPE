@@ -1,0 +1,17 @@
+name: spinor
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - pytorch
+  - torchaudio
+  - torchvision
+  - cudatoolkit=11.1
+  - ffmpeg=4.3.1
+  - scikit-image
+  - tqdm
+  - matplotlib
+  - numpy
+  - sphinx-gallery
