@@ -102,7 +102,7 @@ for i, grid in enumerate(grids):
 
         res, prop = ps.imaginary(1/50, 1, DEVICE, is_sampling=False)
 
-        stmt = """ttools.ifft_2d(prop.psik, prop.space['dr']).block_until_ready()"""
+        stmt = """ttools.ifft_2d(prop.psik, prop.space['dr'])[-1].block_until_ready()"""
 
         timer = timeit.Timer(stmt=stmt, globals=globals())
 
