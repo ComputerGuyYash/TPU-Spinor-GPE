@@ -92,8 +92,6 @@ for i, grid in enumerate(grids):
         print(ex)
         break
 
-# %%
-
 median = np.array([np.median(times) for times in meas_times])
 med_ab_dev = np.array([mad(times, scale='normal') for times in meas_times])
 
@@ -101,4 +99,4 @@ tag = COMPUTER + '_' + DEVICE+ '_prop'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(ps.paths['data'] + '../' + tag, np.array(meas_times, dtype='object'))
+np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))

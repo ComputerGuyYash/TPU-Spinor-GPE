@@ -46,7 +46,7 @@ ATOM_NUM = 1e2
 OMEG = {'x': W, 'y': W, 'z': 40 * W}
 G_SC = {'uu': 1, 'dd': 1, 'ud': 1.04}
 
-DEVICE = 'jax'
+DEVICE = 'cuda'
 COMPUTER = 'Kaggle'
 
 for i, grid in enumerate(grids):
@@ -89,7 +89,7 @@ tag = 'fft\\' + COMPUTER + '_' + DEVICE + '_fft'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(ps.paths['data'] + '../' + tag, np.array(meas_times, dtype='object'))
+np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))
 
 for i, grid in enumerate(grids):
     print(i)
@@ -128,4 +128,4 @@ tag = COMPUTER + '_' + DEVICE + '_ifft'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(ps.paths['data'] + '../' + tag, np.array(meas_times, dtype='object'))
+np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))

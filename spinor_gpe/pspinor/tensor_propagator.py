@@ -12,7 +12,48 @@ from spinor_gpe.pspinor import tensor_tools as ttools
 from spinor_gpe.pspinor.plotting_tools import next_available_path
 from spinor_gpe.pspinor import prop_result
 
+@jax.jit
+def full_step(psik,dt_out,eng_out,dt_in,eng_in,g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num):
+    # t_step, eng, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num
+    psik = single_step(dt_out, eng_out, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num)
+    psik = single_step(dt_in, eng_in, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num)
+    psik = single_step(dt_out, eng_out, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num)
+    return psik
 
+@jax.jit
+def single_step(t_step, eng, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num):
+        
+    psik = [eng * pk for eng, pk in zip(eng['kin'], psik)]
+    psi = ttools.ifft_2d(psik, delta_r=dr)
+    psi, dens = ttools.norm(psi, dv_r, atom_num)
+    # print(self.g_sc['uu'])
+    # First half step of the interaction energy operator
+    int_eng = [g_sc_uu * dens[0] + g_sc_ud * dens[1],
+                g_sc_dd * dens[1] + g_sc_ud * dens[0]]
+    int_op = ttools.evolution_op(t_step / 2, int_eng)
+    psi = [op * p for op, p in zip(int_op, psi)]
+    # First half step of the coupling energy operator
+    
+    psi = [sum([elem * p for elem, p in zip(row, psi)])
+            for row in eng['coupl']]
+    # Full step of the potential energy operator
+    psi = [eng * p for eng, p in zip(eng['pot'], psi)]
+    # Second half step of the coupling energy operator
+    
+    psi = [sum([elem * p for elem, p in zip(row, psi)])
+            for row in eng['coupl']]
+    # Second half step of the interaction energy operator
+    # ??? Is renormalization needed? It's not in previous code versions.
+    # psi, dens = ttools.norm(psi, self.space['dv_r'], self.atom_num)
+    # int_eng = [self.g_sc['uu'] * dens[0] + self.g_sc['ud'] * dens[1],
+    #            self.g_sc['dd'] * dens[1] + self.g_sc['ud'] * dens[0]]
+    # int_op = ttools.evolution_op(t_step / 2, int_eng)
+    psi = [op * p for op, p in zip(int_op, psi)]
+    # Second half step of the kintetic energy operator
+    psik = ttools.fft_2d(psi, delta_r=dr)
+    psik = [eng * pk for eng, pk in zip(eng['kin'], psik)]
+    psik, _ = ttools.norm(psik, dv_k, atom_num)
+    return psik
 class TensorPropagator:
     """CPU- or GPU-compatible propagator of the GPE, with tensors.
 
@@ -217,71 +258,24 @@ class TensorPropagator:
         result = prop_result.PropResult(psi, psik, energy, pops, file_name)
         return result
     
-    @partial(jax.jit, static_argnums=(0,))
+    # @partial(jax.jit, static_argnums=(0,))
     def full_step(self,psik):
         """Full step forward in real or imaginary time.
 
         For accuracy, divide the full propagation step into three single steps
         using the magic gamma time steps.
         """
-
-        psik = self.single_step(self.dt_out, self.eng_out,psik)  # Outer sub-time step
-        psik = self.single_step(self.dt_in, self.eng_in,psik)  # Inner sub-time step
-        psik = self.single_step(self.dt_out, self.eng_out,psik)  # Outer sub-time step
+        psik = full_step(psik, self.dt_out, self.eng_out, self. dt_in, self.eng_in, self.g_sc['uu'], self.g_sc['ud'], self.g_sc['dd'], self.space['dr'], self.space['dv_r'], self.space['dv_k'], self.atom_num)
+        # psik = self.single_step(self.dt_out, self.eng_out,psik)  # Outer sub-time step
+        # psik = self.single_step(self.dt_in, self.eng_in,psik)  # Inner sub-time step
+        # psik = self.single_step(self.dt_out, self.eng_out,psik)  # Outer sub-time step
         return psik
-    def single_step(self, t_step, eng,psik):
-        # print(type(t_step))
-        # print(type(eng))
-        """Single step forward in real or imaginary time with spectral method.
-
-        The kinetic, interaction, and coupling time-evolution operators are
-        symmetrically split into two half-single steps around the full-single
-        step potential energy operator.
-
-        Parameters
-        ----------
-        t_step : :obj:`float`
-            The sub-time step.
-        eng : :obj:`dict`
-            The kinetic and potential energy evolution operators corresponding
-            to the given sub-time step.
-
-        """
-        # First half step of the kinetic energy operator
-        # psik = self.psik
-        # print(self.psik)
-        psik = [eng * pk for eng, pk in zip(eng['kin'], psik)]
-        psi = ttools.ifft_2d(psik, delta_r=self.space['dr'])
-        psi, dens = ttools.norm(psi, self.space['dv_r'], self.atom_num)
-        # print(self.g_sc['uu'])
-        # First half step of the interaction energy operator
-        int_eng = [self.g_sc['uu'] * dens[0] + self.g_sc['ud'] * dens[1],
-                   self.g_sc['dd'] * dens[1] + self.g_sc['ud'] * dens[0]]
-        int_op = ttools.evolution_op(t_step / 2, int_eng)
-        psi = [op * p for op, p in zip(int_op, psi)]
-        # First half step of the coupling energy operator
-        if self.is_coupling:
-            psi = [sum([elem * p for elem, p in zip(row, psi)])
-                   for row in eng['coupl']]
-        # Full step of the potential energy operator
-        psi = [eng * p for eng, p in zip(eng['pot'], psi)]
-        # Second half step of the coupling energy operator
-        if self.is_coupling:
-            psi = [sum([elem * p for elem, p in zip(row, psi)])
-                   for row in eng['coupl']]
-        # Second half step of the interaction energy operator
-        # ??? Is renormalization needed? It's not in previous code versions.
-        # psi, dens = ttools.norm(psi, self.space['dv_r'], self.atom_num)
-        # int_eng = [self.g_sc['uu'] * dens[0] + self.g_sc['ud'] * dens[1],
-        #            self.g_sc['dd'] * dens[1] + self.g_sc['ud'] * dens[0]]
-        # int_op = ttools.evolution_op(t_step / 2, int_eng)
-        psi = [op * p for op, p in zip(int_op, psi)]
-        # Second half step of the kintetic energy operator
-        psik = ttools.fft_2d(psi, delta_r=self.space['dr'])
-        psik = [eng * pk for eng, pk in zip(eng['kin'], psik)]
-        psik, _ = ttools.norm(psik, self.space['dv_k'], self.atom_num)
-        return psik
-
+    
+    def single_step(self, t_step, eng, psik):
+        return single_step(t_step, eng, psik, self.g_sc['uu'], self.g_sc['ud'], self.g_sc['dd'], self.space['dr'], self.space['dv_r'], self.space['dv_k'], self.atom_num)
+    
+    
+    
     def eng_expect(self, psik):
         """Compute the energy expectation value of the wavefunction.
 

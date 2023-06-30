@@ -90,7 +90,6 @@ for i, grid in tqdm(enumerate(grids)):
         del stmt
         del psi
         del op
-        del ps
         torch.cuda.empty_cache()
     except RuntimeError as ex:
         print(ex)
@@ -103,4 +102,4 @@ tag = COMPUTER + '_' + DEVICE + '_had'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(ps.paths['data'] + '../' + tag, np.array(meas_times, dtype='object'))
+np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))
