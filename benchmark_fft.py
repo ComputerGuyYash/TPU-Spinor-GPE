@@ -32,7 +32,7 @@ grids = [(64, 64),
          (1024, 2048),
          (2048, 2048),
          (2048, 4096),
-         (4096, 4096)]
+         (4096, 4096)][:6]
 n_grids = len(grids)
 meas_times = [[0] for i in range(n_grids)]
 repeats = np.zeros(n_grids)
@@ -60,7 +60,7 @@ for i, grid in enumerate(grids):
         ps.coupling_setup(wavel=790.1e-9, kin_shift=False)
 
         res, prop = ps.imaginary(1/50, 1, DEVICE, is_sampling=False)
-        _ = ttools.fft_2d(prop.psik, prop.space['dr'])
+        _ = ttools.fft_2d(prop.psik, prop.space['dr'])[-1].block_until_ready()
         stmt = """ttools.fft_2d(prop.psik, prop.space['dr'])[-1].block_until_ready()"""
 
         timer = timeit.Timer(stmt=stmt, globals=globals())
@@ -103,7 +103,7 @@ for i, grid in enumerate(grids):
         ps.coupling_setup(wavel=790.1e-9, kin_shift=False)
 
         res, prop = ps.imaginary(1/50, 1, DEVICE, is_sampling=False)
-
+        _ = ttools.ifft_2d(prop.psik, prop.space['dr'])[-1].block_until_ready()
         stmt = """ttools.ifft_2d(prop.psik, prop.space['dr'])[-1].block_until_ready()"""
 
         timer = timeit.Timer(stmt=stmt, globals=globals())

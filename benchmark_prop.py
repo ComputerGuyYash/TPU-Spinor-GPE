@@ -65,7 +65,7 @@ for i, grid in enumerate(grids):
                           mesh_points=grid)
         ps.coupling_setup(wavel=790.1e-9, kin_shift=False)
         res, prop = ps.imaginary(1/50, 1, DEVICE, is_sampling=False)
-        _ = prop.full_step(prop.psik)
+        _ = prop.full_step(prop.psik)[-1].block_until_ready()
         stmt = """prop.full_step(prop.psik)[-1].block_until_ready()"""  # A full time step function call.
 
         # Create a code timing object.

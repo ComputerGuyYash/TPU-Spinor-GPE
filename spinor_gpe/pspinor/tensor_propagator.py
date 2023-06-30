@@ -15,6 +15,7 @@ from spinor_gpe.pspinor import prop_result
 @jax.jit
 def full_step(psik,dt_out,eng_out,dt_in,eng_in,g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num):
     # t_step, eng, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num
+    print("Compiling Full Step")
     psik = single_step(dt_out, eng_out, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num)
     psik = single_step(dt_in, eng_in, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num)
     psik = single_step(dt_out, eng_out, psik, g_sc_uu, g_sc_ud, g_sc_dd, dr, dv_r, dv_k, atom_num)
@@ -273,8 +274,6 @@ class TensorPropagator:
     
     def single_step(self, t_step, eng, psik):
         return single_step(t_step, eng, psik, self.g_sc['uu'], self.g_sc['ud'], self.g_sc['dd'], self.space['dr'], self.space['dv_r'], self.space['dv_k'], self.atom_num)
-    
-    
     
     def eng_expect(self, psik):
         """Compute the energy expectation value of the wavefunction.

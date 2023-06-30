@@ -199,6 +199,7 @@ def ifft_1d(psik, delta_r=(1, 1), axis=0) -> list:
 
 @jax.jit
 def fft_2d(psi, delta_r=(1, 1)) -> list:
+    print("Recompiling fft2d")
     """Compute the forward 2D FFT of `psi`.
 
     Parameters
@@ -233,8 +234,10 @@ def fft_2d(psi, delta_r=(1, 1)) -> list:
         return list(psi)
     return psik
 
-
+@jax.jit
 def ifft_2d(psik, delta_r=(1, 1)) -> list:
+    print("Recompiling ifft2d")
+
     """Compute the inverse 2D FFT of `psik`.
 
     Parameters
