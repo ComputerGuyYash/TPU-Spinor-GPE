@@ -32,7 +32,7 @@ grids = [(64, 64),
          (1024, 2048),
          (2048, 2048),
          (2048, 4096),
-         (4096, 4096)][:6]
+         (4096, 4096)]
 n_grids = len(grids)
 meas_times = [[0] for i in range(n_grids)]
 repeats = np.zeros(n_grids)
