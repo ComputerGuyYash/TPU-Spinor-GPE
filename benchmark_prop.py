@@ -37,7 +37,7 @@ grids = [(64, 64),
          (1024, 2048),
          (2048, 2048),
          (2048, 4096),
-         (4096, 4096)]
+         (4096, 4096)][:1]
 # grids = [grids[0]]
 n_grids = len(grids)
 meas_times = [[0] for i in range(n_grids)]
@@ -98,5 +98,6 @@ med_ab_dev = np.array([mad(times, scale='normal') for times in meas_times])
 tag = COMPUTER + '_' + DEVICE+ '_prop'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
+SAVE = 'benchmarks/'  # Default data path is in the /data/ folder
 
-np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))
+np.save(SAVE + tag, np.array(meas_times, dtype='object'))

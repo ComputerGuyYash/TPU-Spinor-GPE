@@ -85,11 +85,12 @@ for i, grid in enumerate(grids):
 median = np.array([np.median(times) for times in meas_times])
 med_ab_dev = np.array([mad(times, scale='normal') for times in meas_times])
 
-tag = 'fft\\' + COMPUTER + '_' + DEVICE + '_fft'
+tag = 'fft' + COMPUTER + '_' + DEVICE + '_fft'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
+SAVE = 'benchmarks/'  # Default data path is in the /data/ folder
 
-np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))
+np.save(SAVE + tag, np.array(meas_times, dtype='object'))
 
 for i, grid in enumerate(grids):
     print(i)
@@ -128,4 +129,6 @@ tag = COMPUTER + '_' + DEVICE + '_ifft'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))
+SAVE = 'benchmarks/'  # Default data path is in the /data/ folder
+
+np.save(SAVE + tag, np.array(meas_times, dtype='object'))

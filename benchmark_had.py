@@ -102,4 +102,6 @@ tag = COMPUTER + '_' + DEVICE + '_had'
 np.savez('data/' + tag, computer=COMPUTER, device=DEVICE,
          size=size, n_repeats=repeats, med=median, mad=med_ab_dev)
 
-np.save(DATA_PATH + '../' + tag, np.array(meas_times, dtype='object'))
+SAVE = 'benchmarks/'  # Default data path is in the /data/ folder
+
+np.save(SAVE + tag, np.array(meas_times, dtype='object'))
