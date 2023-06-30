@@ -37,7 +37,7 @@ grids = [(64, 64),
          (1024, 2048),
          (2048, 2048),
          (2048, 4096),
-         (4096, 4096)][:1]
+         (4096, 4096)]
 # grids = [grids[0]]
 n_grids = len(grids)
 meas_times = [[0] for i in range(n_grids)]
